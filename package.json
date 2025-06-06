@@ -6,15 +6,14 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "build:check": "tsc -b --noEmit",
+    "build:check": "tsc --noEmit",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "preview": "vite preview",
     "prepare": "husky",
-    "format": "prettier \"src/**/*.{ts,tsx,js,json}\" --ignore-path .gitignore",
-    "format:check": "yarn format --check",
-    "format:write": "yarn format --write",
-    "validate": "yarn format:check && yarn lint && yarn build:check",
+    "format": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
+    "format:write": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
+    "validate": "yarn format && yarn lint && yarn build:check",
     "validate:fix": "yarn format:write && yarn lint:fix && yarn build:check"
   },
   "dependencies": {
@@ -47,14 +46,12 @@
     "vite": "^6.2.0"
   },
   "lint-staged": {
-    "!(dist)/**/*.{js,ts,tsx,jsx}": [
+    "**/*.{ts,tsx,js,jsx}": [
       "prettier --write",
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ],
-    "!(dist)/**/*.{json,md,yml,yaml}": [
-      "prettier --write",
-      "git add"
+    "**/*.{json,md,css}": [
+      "prettier --write"
     ]
   },
   "packageManager": "yarn@4.9.2"
