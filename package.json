@@ -6,13 +6,15 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint . --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "preview": "vite preview",
     "prepare": "husky",
-    "format": "prettier  \"src/**/*.{ts,tsx,js,json}\" --ignore-path .gitignore",
+    "format": "prettier \"src/**/*.{ts,tsx,js,json}\" --ignore-path .gitignore",
     "format:check": "yarn format --check",
     "format:write": "yarn format --write",
-    "validate": "yarn format:write && yarn lint && yarn build"
+    "validate": "yarn format:check && yarn lint && yarn build",
+    "validate:fix": "yarn format:write && yarn lint:fix && yarn build"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.1",
@@ -35,7 +37,7 @@
     "eslint-plugin-react-refresh": "^0.4.19",
     "eslint-plugin-unused-imports": "^4.1.4",
     "globals": "^15.15.0",
-    "husky": "^9.1.7",
+    "husky": "^8.0.0",
     "lint-staged": "^15.5.0",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
@@ -43,19 +45,14 @@
     "typescript-eslint": "^8.24.1",
     "vite": "^6.2.0"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npx lint-staged",
-      "commit-msg": "npx commitlint --edit $1"
-    }
-  },
   "lint-staged": {
     "!(dist)/**/*.{js,ts,tsx,jsx}": [
-      "eslint --fix",
-      "prettier --write"
+      "prettier --write",
+      "eslint --fix"
     ],
     "!(dist)/**/*.{json,md,yml,yaml}": [
       "prettier --write"
     ]
-  }
+  },
+  "packageManager": "yarn@4.9.2"
 }
