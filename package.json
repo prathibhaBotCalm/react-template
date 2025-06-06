@@ -6,13 +6,16 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "build:check": "tsc --noEmit",
+    "build:check": "tsc -b && vite build --mode production",
+    "build:ts": "tsc -b",
+    "type-check": "tsc --noEmit",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "preview": "vite preview",
     "prepare": "husky",
     "format": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
     "format:write": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
+    "pre-commit": "lint-staged && yarn build:ts",
     "validate": "yarn format && yarn lint && yarn build:check",
     "validate:fix": "yarn format:write && yarn lint:fix && yarn build:check"
   },
