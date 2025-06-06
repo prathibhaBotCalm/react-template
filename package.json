@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:check": "tsc -b --noEmit",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "preview": "vite preview",
@@ -13,8 +14,8 @@
     "format": "prettier \"src/**/*.{ts,tsx,js,json}\" --ignore-path .gitignore",
     "format:check": "yarn format --check",
     "format:write": "yarn format --write",
-    "validate": "yarn format:check && yarn lint && yarn build",
-    "validate:fix": "yarn format:write && yarn lint:fix && yarn build"
+    "validate": "yarn format:check && yarn lint && yarn build:check",
+    "validate:fix": "yarn format:write && yarn lint:fix && yarn build:check"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.1",
@@ -48,10 +49,12 @@
   "lint-staged": {
     "!(dist)/**/*.{js,ts,tsx,jsx}": [
       "prettier --write",
-      "eslint --fix"
+      "eslint --fix",
+      "git add"
     ],
     "!(dist)/**/*.{json,md,yml,yaml}": [
-      "prettier --write"
+      "prettier --write",
+      "git add"
     ]
   },
   "packageManager": "yarn@4.9.2"
