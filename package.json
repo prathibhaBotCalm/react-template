@@ -18,7 +18,8 @@
     "pre-commit": "lint-staged && yarn build:ts",
     "pre-push": "yarn build:check",
     "validate": "yarn format && yarn lint && yarn build:check",
-    "validate:fix": "yarn format:write && yarn lint:fix && yarn build:check"
+    "validate:fix": "yarn format:write && yarn lint:fix && yarn build:check",
+    "test": "echo \"No tests specified\" && exit 0"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
