@@ -18,8 +18,7 @@
     "pre-commit": "lint-staged && yarn build:ts",
     "pre-push": "yarn build:check",
     "validate": "yarn format && yarn lint && yarn build:check",
-    "validate:fix": "yarn format:write && yarn lint:fix && yarn build:check",
-    "render-install": "yarn install --frozen-lockfile"
+    "validate:fix": "yarn format:write && yarn lint:fix && yarn build:check"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
@@ -65,6 +64,5 @@
     "**/*.{json,md,css}": [
       "prettier --write"
     ]
-  },
-  "packageManager": "yarn@4.9.2"
+  }
 }
